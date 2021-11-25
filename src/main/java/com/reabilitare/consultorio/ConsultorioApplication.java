@@ -34,12 +34,12 @@ public class ConsultorioApplication implements CommandLineRunner {
 		Produto p2 = new Produto(null, "Fisioterapia", 100.00);
 		Produto p3 = new Produto(null, "Piling", 100.00);
 		
-		cat1.getProdutos().addAll(Arrays.asList(p1, p3));
-		cat2.getProdutos().addAll(Arrays.asList(p2));
+		cat2.getProdutos().addAll(Arrays.asList(p1, p3));
+		cat1.getProdutos().addAll(Arrays.asList(p2));
 		
-		p1.getCategorias().addAll(Arrays.asList(cat1));
-		p2.getCategorias().addAll(Arrays.asList(cat2));
-		p3.getCategorias().addAll(Arrays.asList(cat1));
+		p1.getCategorias().addAll(Arrays.asList(cat2));
+		p2.getCategorias().addAll(Arrays.asList(cat1));
+		p3.getCategorias().addAll(Arrays.asList(cat2));
 		
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3));
