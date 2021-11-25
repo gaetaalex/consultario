@@ -9,20 +9,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.reabilitare.consultorio.domain.Servicos;
-import com.reabilitare.consultorio.services.ServicoService;
+import com.reabilitare.consultorio.domain.Categoria;
+import com.reabilitare.consultorio.services.CategoriaCategory;
 
 @RestController
-@RequestMapping(value="/servico")
-public class ServicoResource {
+@RequestMapping(value="/categoria")
+public class CategoriaResource {
 	
 	@Autowired
-	private ServicoService service;
+	private CategoriaCategory categoria;
 
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {
 		
-		Optional<Servicos> obj = service.buscar(id);
+		Optional<Categoria> obj = categoria.buscar(id);
 		return ResponseEntity.ok().body(obj);
 		
 	}
