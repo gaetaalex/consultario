@@ -13,6 +13,7 @@ import com.reabilitare.consultorio.domain.Cidade;
 import com.reabilitare.consultorio.domain.Cliente;
 import com.reabilitare.consultorio.domain.Endereco;
 import com.reabilitare.consultorio.domain.Estado;
+import com.reabilitare.consultorio.domain.ItemPedido;
 import com.reabilitare.consultorio.domain.Pagamento;
 import com.reabilitare.consultorio.domain.PagamentoComBoleto;
 import com.reabilitare.consultorio.domain.PagamentoComCartao;
@@ -25,6 +26,7 @@ import com.reabilitare.consultorio.repositories.CidadeRepository;
 import com.reabilitare.consultorio.repositories.ClienteRepository;
 import com.reabilitare.consultorio.repositories.EnderecoRepository;
 import com.reabilitare.consultorio.repositories.EstadoRepository;
+import com.reabilitare.consultorio.repositories.ItemPedidoRepository;
 import com.reabilitare.consultorio.repositories.PagamentoRepository;
 import com.reabilitare.consultorio.repositories.PedidoRepository;
 import com.reabilitare.consultorio.repositories.ProdutoRepository;
@@ -55,6 +57,9 @@ public class ConsultorioApplication implements CommandLineRunner {
 	
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
+	
+	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ConsultorioApplication.class, args);
@@ -118,6 +123,19 @@ public class ConsultorioApplication implements CommandLineRunner {
 		
 		pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
 		pagamentoRepository.saveAll(Arrays.asList(pagto1, pagto2));
+		
+		ItemPedido ip1 = new ItemPedido(ped1, p1, 0.00, 1, 100.00);
+		ItemPedido ip2 = new ItemPedido(ped1, p3, 0.00, 2, 100.00);
+		ItemPedido ip3 = new ItemPedido(ped2, p2, 10.00, 1, 100.00);
+		
+		ped1.getItens().addAll(Arrays.asList(ip1, ip2));
+		ped2.getItens().addAll(Arrays.asList(ip3));
+		
+		p1.getItens().addAll(Arrays.asList(ip1));
+		p2.getItens().addAll(Arrays.asList(ip3));
+		p3.getItens().addAll(Arrays.asList(ip2));
+		
+		itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));
 		
 		}
 
