@@ -69,6 +69,11 @@ public class ConsultorioApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		Categoria cat1 = new Categoria(null,"Fisio");
 		Categoria cat2 = new Categoria(null,"Estetica");
+		Categoria cat3 = new Categoria(null,"Acupuntura");
+		Categoria cat4 = new Categoria(null,"Pilates");
+		Categoria cat5 = new Categoria(null,"RPG");
+		Categoria cat6 = new Categoria(null,"Massagem");
+		Categoria cat7 = new Categoria(null,"Eletro");
 		
 		Produto p1 = new Produto(null, "Drenagem", 100.00);
 		Produto p2 = new Produto(null, "Fisioterapia", 100.00);
@@ -84,7 +89,7 @@ public class ConsultorioApplication implements CommandLineRunner {
 		Estado est1 = new Estado(null, "Sao Paulo");
 		Estado est2 = new Estado(null, "Minas Gerais");
 
-		categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
+		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7));
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3));		
 
 		Cidade c1 = new Cidade(null, "Sao Paulo", est1);
