@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.reabilitare.consultorio.domain.Categoria;
+import com.reabilitare.consultorio.dto.CategoriaDTO;
 import com.reabilitare.consultorio.repositories.CategoriaRepository;
 import com.reabilitare.consultorio.services.exceptions.DataIntegrityException;
 import com.reabilitare.consultorio.services.exceptions.ObjectNotFoundException;
@@ -55,5 +56,8 @@ public class CategoriaService {
 		return repo.findAll(pageRequest);
 	}
 	
+	public Categoria fromDTO(CategoriaDTO objDto) {
+		return new Categoria(objDto.getId(), objDto.getNome());
+	}
 	
 }
